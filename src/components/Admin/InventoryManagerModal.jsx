@@ -13,7 +13,8 @@ import {
   CreditCard,
   Building,
   Lock,
-  ShieldAlert
+  ShieldAlert,
+  UploadCloud
 } from 'lucide-react';
 
 const EMPTY_PRODUCT = {
@@ -119,6 +120,40 @@ export default function InventoryManagerModal() {
       updateBusinessInfo(settingsForm);
     }
     showNotice('PayPal & Business settings saved! Real payments now route to: ' + settingsForm.paypalEmail);
+  };
+
+  const [syncStatus, setSyncStatus] = useState('');
+
+  const handleSyncToProduction = async () => {
+    try {
+      setSyncStatus('syncing');
+      const localProducts = localStorage.getItem('sakura_products');
+      const localBusiness = localStorage.getItem('sakura_business_info');
+      const localUsers = localStorage.getItem('sakura_users');
+
+      const payload = {
+        products: localProducts ? JSON.parse(localProducts) : products,
+        businessInfo: localBusiness ? JSON.parse(localBusiness) : businessInfo,
+        users: localUsers ? JSON.parse(localUsers) : []
+      };
+
+      const res = await fetch('/api/sync-localhost-data', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSyncStatus('success');
+        showNotice('Successfully saved local listings, admin account & ABN to project data files!');
+      } else {
+        setSyncStatus('error');
+        showNotice('Sync error: ' + (data.error || 'Failed'));
+      }
+    } catch (err) {
+      setSyncStatus('error');
+      showNotice('Sync failed: ' + err.message);
+    }
   };
 
   // Handle edit selection from outside or inside
@@ -482,18 +517,30 @@ export default function InventoryManagerModal() {
             </button>
           </div>
 
-          <button
-            onClick={() => {
-              if (window.confirm('Reset catalog back to defaults? Note: your custom edits will be restored to demo items.')) {
-                resetToDefaultProducts();
-                showNotice('Restored original store product catalog.');
-              }
-            }}
-            className="text-[11px] font-semibold text-sakura-400/70 hover:text-rose-400 flex items-center gap-1 transition-colors"
-          >
-            <RotateCcw className="w-3 h-3" />
-            Reset Defaults
-          </button>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={handleSyncToProduction}
+              disabled={syncStatus === 'syncing'}
+              className="text-[11px] font-bold text-emerald-400 bg-emerald-950/40 hover:bg-emerald-900/60 border border-emerald-500/30 px-3 py-1.5 rounded-xl flex items-center gap-1.5 transition-all shadow-xs"
+              title="Save all local listings, admin account, and ABN to the project files for deployment"
+            >
+              <UploadCloud className="w-3.5 h-3.5" />
+              {syncStatus === 'syncing' ? 'Saving...' : 'Sync to GitHub & Production'}
+            </button>
+
+            <button
+              onClick={() => {
+                if (window.confirm('Reset catalog back to defaults? Note: your custom edits will be restored to demo items.')) {
+                  resetToDefaultProducts();
+                  showNotice('Restored original store product catalog.');
+                }
+              }}
+              className="text-[11px] font-semibold text-sakura-400/70 hover:text-rose-400 flex items-center gap-1 transition-colors"
+            >
+              <RotateCcw className="w-3 h-3" />
+              Reset Defaults
+            </button>
+          </div>
         </div>
 
         {/* Scrollable Body */}
@@ -552,15 +599,15 @@ export default function InventoryManagerModal() {
                         </h4>
                         <div className="text-xs text-sakura-300/80 mt-0.5 flex flex-wrap items-center gap-1.5">
                           <span>Price:</span>
-                          {item.originalPrice && item.originalPrice > item.basePrice && (
+                          {item.originalPrice && Number(item.originalPrice) > Number(item.basePrice) && (
                             <span className="line-through text-sakura-400/60 font-semibold text-xs">
-                              ${item.originalPrice.toFixed(2)}
+                              ${Number(item.originalPrice).toFixed(2)}
                             </span>
                           )}
-                          <strong className="text-sakura-200">${item.basePrice.toFixed(2)} AUD</strong>
-                          {item.originalPrice && item.originalPrice > item.basePrice && (
+                          <strong className="text-sakura-200">${Number(item.basePrice || 0).toFixed(2)} AUD</strong>
+                          {item.originalPrice && Number(item.originalPrice) > Number(item.basePrice) && (
                             <span className="text-[10px] bg-emerald-950 text-emerald-300 border border-emerald-500/40 px-1.5 py-0.2 rounded font-bold">
-                              Deal (-${(item.originalPrice - item.basePrice).toFixed(2)})
+                              Deal (-${(Number(item.originalPrice) - Number(item.basePrice)).toFixed(2)})
                             </span>
                           )}
                           <span className="ml-1 text-sakura-400">

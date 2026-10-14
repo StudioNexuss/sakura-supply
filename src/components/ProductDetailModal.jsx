@@ -88,16 +88,18 @@ export default function ProductDetailModal() {
     }
   });
 
-  const finalUnitPrice = selectedProduct.basePrice + extraCost;
+  const baseNum = Number(selectedProduct.basePrice) || 0;
+  const origNum = selectedProduct.originalPrice !== null && selectedProduct.originalPrice !== undefined ? Number(selectedProduct.originalPrice) : null;
+  const finalUnitPrice = baseNum + extraCost;
   const finalTotalPrice = finalUnitPrice * quantity;
 
   // Strikethrough Deal Comparison:
   // Triggered when product has originalPrice > basePrice, or an option reduces the price (extraCost < 0)
   let referencePrice = null;
-  if (selectedProduct.originalPrice && selectedProduct.originalPrice > selectedProduct.basePrice) {
-    referencePrice = selectedProduct.originalPrice + Math.max(0, extraCost);
+  if (origNum !== null && origNum > baseNum) {
+    referencePrice = origNum + Math.max(0, extraCost);
   } else if (extraCost < 0) {
-    referencePrice = selectedProduct.basePrice;
+    referencePrice = baseNum;
   }
   const isDeal = referencePrice !== null && referencePrice > finalUnitPrice;
   const savingsPerUnit = isDeal ? referencePrice - finalUnitPrice : 0;
@@ -230,7 +232,7 @@ export default function ProductDetailModal() {
               {/* Primary Image */}
               <div className="relative aspect-4/3 sm:aspect-square w-full bg-[#161622] rounded-3xl overflow-hidden border border-sakura-900/40 flex items-center justify-center">
                 <img
-                  src={selectedProduct.images[selectedImage] || selectedProduct.images[0]}
+                  src={selectedProduct.images?.[selectedImage] || selectedProduct.images?.[0] || "https://images.unsplash.com/photo-1613771404784-3a5686aa2be3?auto=format&fit=crop&w=800&q=80"}
                   alt={selectedProduct.name}
                   className="w-full h-full object-cover"
                 />

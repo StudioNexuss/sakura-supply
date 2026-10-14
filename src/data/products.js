@@ -1,233 +1,1605 @@
 export const PRODUCTS = [
   {
-    id: "prod-1",
-    name: "Pokemon 151 Special Ultra-Premium Collection Box",
-    basePrice: 189.95,
-    shippingCost: 0,
-    category: "Trading Cards",
-    isPreOrder: false,
-    stockCount: 14,
-    condition: "Brand New Factory Sealed",
-    rating: 4.9,
-    reviewCount: 38,
-    images: [
-      "https://images.unsplash.com/photo-1613771404784-3a5686aa2be3?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80"
+    "id": "prod-1791763190086",
+    "name": "Pokémon M5 Abyss Eye Booster Box (Japanese)",
+    "basePrice": 129.99,
+    "originalPrice": 149.99,
+    "shippingCost": 15.01,
+    "category": "Trading Cards",
+    "isPreOrder": true,
+    "expectedRelease": "Expected to arrive 20th October",
+    "stockCount": 30,
+    "hasPurchaseCap": true,
+    "purchaseCap": 5,
+    "condition": "Brand New Factory Sealed",
+    "images": [
+      "https://samuraiswordtokyo.com/wp-content/uploads/2026/08/m5dmg_1-1-1320x1760.webp"
     ],
-    shortDescription: "Ultra-Premium collector edition including metal cards, etched promo cards, playmat, and booster packs.",
-    description: "Authentic Australian retail stock. Direct from distributor. Guaranteed unweighed, untampered, and stored in a temperature-controlled archival room in Melbourne. Comes with official seal intact.",
-    itemSpecifics: {
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shrink Wrap Options",
+        "options": [
+          {
+            "label": "Standard Factory Seal",
+            "priceModifier": 0,
+            "default": true
+          },
+          {
+            "label": "Standard No Shrink",
+            "priceModifier": -17
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791763026570",
+    "name": "Pokémon S11a Incandescent Arcana Booster Box (Japanese)",
+    "basePrice": 149.99,
+    "originalPrice": 189.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": true,
+    "expectedRelease": "Expected to arrive 20th October",
+    "stockCount": 10,
+    "hasPurchaseCap": true,
+    "purchaseCap": 3,
+    "condition": "Brand New Factory Sealed",
+    "images": [
+      "https://samuraiswordtokyo.com/wp-content/uploads/2026/08/s11abox-dmg-main-1-1320x1760.webp"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shrink Wrap Options",
+        "options": [
+          {
+            "label": "Standard Factory Seal",
+            "priceModifier": 0,
+            "default": true
+          },
+          {
+            "label": "Standard No Shrink",
+            "priceModifier": -17
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791758636376",
+    "name": "Miraidon Scarlet Violet Elite Trainer Box Promo",
+    "basePrice": 9.99,
+    "originalPrice": 14.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 1,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_490719.jpg?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "spec-1791758668676",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791758588693",
+    "name": "Mega Chandelure ex Pitch Black Full Art",
+    "basePrice": 9.99,
+    "originalPrice": 14.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 1,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_704856.png?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard tracked shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791758508376",
+    "name": "Leon Vivid Voltage Rainbow",
+    "basePrice": 9.99,
+    "originalPrice": 19.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 1,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_226510.jpg?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791758457293",
+    "name": "Solrock Crown Zenith Galarian Gallery",
+    "basePrice": 9.99,
+    "originalPrice": 19.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 1,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_478032.jpg?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791758431093",
+    "name": "Manaphy Crown Zenith Galarian Gallery",
+    "basePrice": 9.99,
+    "originalPrice": 19.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 0,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_478023.jpg?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791758400926",
+    "name": "Wigglytuff Paldean Fates Shiny Rare",
+    "basePrice": 9.99,
+    "originalPrice": 19.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 1,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_534616.jpg?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791758372161",
+    "name": "Paras Crown Zenith Galarian Gallery",
+    "basePrice": 9.99,
+    "originalPrice": 14.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 0,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_478061.jpg?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791758319477",
+    "name": "Vileplume Paldean Fates Shiny Rare",
+    "basePrice": 9.99,
+    "originalPrice": 14.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 1,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_534462.jpg?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791758291726",
+    "name": "Spidops ex Scarlet Violet Special Illustration Rare",
+    "basePrice": 14.99,
+    "originalPrice": 19.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 1,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_487147.webp?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791758113361",
+    "name": "Mareep Crown Zenith Galarian Gallery",
+    "basePrice": 14.99,
+    "originalPrice": 19.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 1,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_478063.jpg?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791758005995",
+    "name": "Kingambit Scarlet Violet Illustration Rare",
+    "basePrice": 14.99,
+    "originalPrice": 19.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 1,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_490078.webp?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791757968028",
+    "name": "Gyarados ex Scarlet Violet Full Art",
+    "basePrice": 14.99,
+    "originalPrice": 19.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 1,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_490083.webp?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791757932244",
+    "name": "Skwovet Scarlet Violet Illustration Rare",
+    "basePrice": 14.99,
+    "originalPrice": 19.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 0,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_490080.webp?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791757899645",
+    "name": "Turtwig Crown Zenith Galarian Gallery",
+    "basePrice": 14.99,
+    "originalPrice": 19.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 0,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_478059.jpg?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791757843311",
+    "name": "Riolu Crown Zenith Galarian Gallery",
+    "basePrice": 14.99,
+    "originalPrice": 19.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 0,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_478045.jpg?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791757769579",
+    "name": "Radiant Blastoise Pokemon Go Radiant Rare",
+    "basePrice": 14.99,
+    "originalPrice": 19.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 1,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_274468.jpg?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791757719329",
+    "name": "Magmortar Crown Zenith Galarian Gallery",
+    "basePrice": 14.99,
+    "originalPrice": 19.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 1,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_478020.jpg?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791757658245",
+    "name": "Miltank Crown Zenith Galarian Gallery",
+    "basePrice": 19.99,
+    "originalPrice": 29.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 1,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_478043.webp?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791757606311",
+    "name": "Arcanine ex Scarlet Violet Full Art",
+    "basePrice": 19.99,
+    "originalPrice": 29.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 1,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_490082.webp?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791757552495",
+    "name": "Raging Bolt ex Temporal Forces Gold Rare",
+    "basePrice": 19.99,
+    "originalPrice": 29.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 1,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_542939.jpg?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791757478795",
+    "name": "Galarian Rapidash V Chilling Reign Full Art",
+    "basePrice": 19.99,
+    "originalPrice": 29.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 1,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_241871.jpg?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791757432513",
+    "name": "Ninetales ex 151 Full Art",
+    "basePrice": 19.99,
+    "originalPrice": 29.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 1,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_517030.jpg?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791757383463",
+    "name": "Gardenia's Vigor Crown Zenith Galarian Gallery Alternate Art",
+    "basePrice": 24.99,
+    "originalPrice": 49.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 1,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_477058.jpg?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791757339280",
+    "name": "Snorlax 151 Elite Trainer Box Promo",
+    "basePrice": 24.99,
+    "originalPrice": 49.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 1,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_517175.jpg?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791757236314",
+    "name": "Lucario Paldean Fates Shiny Rare",
+    "basePrice": 29.99,
+    "originalPrice": 49.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 0,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_534753.jpg?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791757188780",
+    "name": "Wiglett Scarlet Violet Illustration Rare",
+    "basePrice": 39.99,
+    "originalPrice": 49.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 0,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_490067.webp?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791757136797",
+    "name": "Cynthia's Ambition Crown Zenith Galarian Gallery Alternate Art",
+    "basePrice": 39.99,
+    "originalPrice": 49.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 1,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_477052.jpg?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791756966012",
+    "name": "Sudowoodo Paldea Evolved Illustration Rare",
+    "basePrice": 49.99,
+    "originalPrice": 69.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 1,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_497622.jpg?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791756912359",
+    "name": "Dragonair 151 Illustration Rare",
+    "basePrice": 59.99,
+    "originalPrice": 69.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 1,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_517020.jpg?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791756812377",
+    "name": "Pikachu Crown Zenith Secret Rare",
+    "basePrice": 59.99,
+    "originalPrice": 69.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 1,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_478103.jpg?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791756772611",
+    "name": "Ralts Scarlet Violet Illustration Rare",
+    "basePrice": 59.99,
+    "originalPrice": 74.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 1,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_490071.webp?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791756691327",
+    "name": "Hisuian Zoroark vstar Crown Zenith Galarian Gallery Alternate Art",
+    "basePrice": 69.99,
+    "originalPrice": 89.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 1,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_477050.jpg?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791756608577",
+    "name": "Entei V Crown Zenith Galarian Gallery Alternate Art",
+    "basePrice": 79.99,
+    "originalPrice": 99.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 1,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_478065.jpg?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791756478228",
+    "name": "Mewtwo vstar Pokemon Go Rainbow",
+    "basePrice": 74.99,
+    "originalPrice": 99.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 1,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_277011.jpg?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791756415328",
+    "name": "Mew Crown Zenith Galarian Gallery",
+    "basePrice": 99.99,
+    "originalPrice": 119.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 0,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_478027.jpg?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791756330613",
+    "name": "Leafeon vstar Crown Zenith Galarian Gallery Alternate Art",
+    "basePrice": 129.99,
+    "originalPrice": 149.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 1,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_477060.jpg?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Pokemon TCG",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791756144296",
+    "name": "Venusaur ex 151 Special Illustration Rare",
+    "basePrice": 139.99,
+    "originalPrice": 149.99,
+    "shippingCost": 10.01,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 0,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Near Mint",
+    "images": [
+      "https://public.getcollectr.com/public-assets/products/product_517044.jpg?optimizer=image&format=webp&width=400&quality=80&strip=metadata"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Pokemon",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [
+      {
+        "id": "packagingProtection",
+        "name": "Shipping Options",
+        "options": [
+          {
+            "label": "Standard Tracked Shipping (bubble mailer)",
+            "priceModifier": 0,
+            "default": true
+          }
+        ]
+      }
+    ],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1791707871949",
+    "name": "Test PayPal",
+    "basePrice": 1,
+    "originalPrice": 1,
+    "shippingCost": 0,
+    "category": "Trading Cards",
+    "isPreOrder": false,
+    "expectedRelease": "",
+    "stockCount": 1,
+    "hasPurchaseCap": false,
+    "purchaseCap": null,
+    "condition": "Brand New Factory Sealed",
+    "images": [
+      "https://images.unsplash.com/photo-1613771404784-3a5686aa2be3?auto=format&fit=crop&w=800&q=80"
+    ],
+    "shortDescription": "",
+    "description": "",
+    "itemSpecifics": {
+      "Brand": "Authentic Distributor",
+      "Language": "English",
+      "Country/Region of Manufacture": "Australia"
+    },
+    "specifications": [],
+    "rating": 5,
+    "reviewCount": 0
+  },
+  {
+    "id": "prod-1",
+    "name": "Pokémon M6 Storm Emeralda Booster Box (Japanese)",
+    "basePrice": 169.99,
+    "shippingCost": 15.01,
+    "category": "Trading Cards",
+    "isPreOrder": true,
+    "stockCount": 30,
+    "condition": "Brand New Factory Sealed",
+    "rating": 4.9,
+    "reviewCount": 38,
+    "images": [
+      "https://scontent-syd2-1.xx.fbcdn.net/v/t39.30808-6/817342911_1118026617334120_5263753806403653085_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x2048&ctp=s960x960&_nc_cat=106&ccb=1-7&_nc_sid=454cf4&_nc_ohc=1DXn6samFwoQ7kNvwH4FQHU&_nc_oc=AdqTmnzBbute7RVIy1_39S9mQK1WzJ3gg-K1PfYvKyYsvFBbBGkwTzErWHzdwIKVmTk&_nc_zt=23&_nc_ht=scontent-syd2-1.xx&_nc_gid=4sBrlwj-XNfO1cpmlJIgPg&_nc_ss=7b2a8&oh=00_AQOZkBiupSBrGV-jD1iLDXPYgSl0i9u2eu82inQjcqB3Gw&oe=6AD1E112"
+    ],
+    "shortDescription": "M6 Booster Box - Includes 30X Booster Packs - Each pack contains 5X Cards - Never guaranteed for any card.",
+    "description": "Authentic Australian retail stock. Direct from distributor. Guaranteed unweighed, untampered, and stored in a temperature-controlled archival room in Melbourne. Comes with official seal intact.",
+    "itemSpecifics": {
       "Brand": "The Pokémon Company",
-      "Set": "Scarlet & Violet - 151",
+      "Set": "M6 - Storm Emeralda",
       "Game": "Pokémon TCG",
-      "Language": "English",
-      "Year Manufactured": "2023",
-      "Configuration": "Box with 16 Booster Packs + Promos",
-      "Country/Region of Manufacture": "USA / Japan"
+      "Language": "Japanese",
+      "Year Manufactured": "2026",
+      "Configuration": "Box with 30 Booster Packs",
+      "Country/Region of Manufacture": "Japan"
     },
-    specifications: [
+    "specifications": [
       {
-        id: "protectivePackaging",
-        name: "Protective Packaging & Presentation",
-        options: [
-          { label: "Original Factory Seal (Standard)", priceModifier: 0, default: true },
-          { label: "Heavy-Duty UV Acrylic Display Case", priceModifier: 16.00 },
-          { label: "Archival Bubble Vault + Corner Protectors", priceModifier: 7.50 }
-        ]
-      },
-      {
-        id: "transitCover",
-        name: "Transit Cover & Insurance",
-        options: [
-          { label: "Standard Tracked Parcel (Free)", priceModifier: 0, default: true },
-          { label: "Signature on Delivery + Full Transit Value Insurance", priceModifier: 9.95 }
+        "id": "protectivePackaging",
+        "name": "Shrink Wrap",
+        "options": [
+          {
+            "label": "Factory Shrink (Standard)",
+            "priceModifier": 0,
+            "default": true
+          },
+          {
+            "label": "No shrink",
+            "priceModifier": -30
+          }
         ]
       }
-    ]
-  },
-  {
-    id: "prod-2",
-    name: "One Piece Card Game: Romance Dawn Booster Box [OP-01] 1st Edition",
-    basePrice: 349.00,
-    shippingCost: 0,
-    category: "Trading Cards",
-    isPreOrder: false,
-    stockCount: 5,
-    condition: "Mint in Sealed Box (MISB)",
-    rating: 5.0,
-    reviewCount: 42,
-    images: [
-      "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1613771404784-3a5686aa2be3?auto=format&fit=crop&w=800&q=80"
     ],
-    shortDescription: "Original Japanese/English print Romance Dawn 24-pack booster box. Complete factory wrap.",
-    description: "Extremely scarce collector grade OP-01 Booster Box. 100% genuine guaranteed with Bandai security seal intact. Stored in collector smoke-free environment.",
-    itemSpecifics: {
-      "Brand": "Bandai",
-      "Game": "One Piece CCG",
-      "Edition": "1st Edition",
-      "Language": "English",
-      "Number of Packs": "24",
-      "Year Manufactured": "2022"
-    },
-    specifications: [
-      {
-        id: "caseProtection",
-        name: "Protective Display Case",
-        options: [
-          { label: "Includes Heavy-Duty UV Acrylic Case (+ $20.00)", priceModifier: 20.00, default: true },
-          { label: "Factory Sealed without Hard Case", priceModifier: 0 }
-        ]
-      }
-    ]
-  },
-  {
-    id: "prod-3",
-    name: "Cyberpunk 2077: Trauma Team Elite 1/6 Scale Polystone Statue",
-    basePrice: 420.00,
-    shippingCost: 0,
-    category: "Collectibles & Statues",
-    isPreOrder: true,
-    expectedRelease: "Q4 2026 - Official Allocation",
-    stockCount: 8,
-    condition: "Brand New - Pre-Order Allocation",
-    rating: 4.8,
-    reviewCount: 19,
-    images: [
-      "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80"
-    ],
-    shortDescription: "Official CD PROJEKT RED limited run statue. Hand-painted polystone with LED base.",
-    description: "Guaranteed allocation upon official batch arrival. Pre-orders are locked in at the pre-order discount price and covered by our pre-order fulfillment guarantee.",
-    itemSpecifics: {
-      "Manufacturer": "PureArts / CDPR",
-      "Scale": "1:6 Scale",
-      "Material": "Polystone & ABS",
-      "Character": "Trauma Team Unit Leader",
-      "Release Window": "October - November 2026"
-    },
-    specifications: [
-      {
-        id: "edition",
-        name: "Collector Edition Variant",
-        options: [
-          { label: "Standard Statue Box", priceModifier: 0, default: true },
-          { label: "Collector Numbered Art Print Included", priceModifier: 35.00 }
-        ]
-      },
-      {
-        id: "shipperBox",
-        name: "Outer Box Protection",
-        options: [
-          { label: "Includes Heavy Brown Shipper Box", priceModifier: 12.00, default: true },
-          { label: "Standard Collector Packaging Only", priceModifier: 0 }
-        ]
-      }
-    ]
-  },
-  {
-    id: "prod-4",
-    name: "Sony PlayStation 5 Pro 2TB 30th Anniversary Limited Edition Console",
-    basePrice: 1599.00,
-    shippingCost: 0,
-    category: "Gaming Hardware",
-    isPreOrder: false,
-    stockCount: 3,
-    condition: "Brand New in Box (Never Opened)",
-    rating: 5.0,
-    reviewCount: 27,
-    images: [
-      "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80"
-    ],
-    shortDescription: "Ultra-limited tribute console inspired by original PS1 aesthetics. Fully serialized.",
-    description: "Extremely rare collector unit. Australian plug and local Sony Australia warranty. Box has zero shelf wear. Stored in protective cardboard outer sleeve in Melbourne.",
-    itemSpecifics: {
-      "Brand": "Sony Interactive Entertainment",
-      "Platform": "Sony PlayStation 5 Pro",
-      "Storage Capacity": "2 TB",
-      "Region Code": "PAL (Australia / NZ)",
-      "Edition": "30th Anniversary Limited Edition"
-    },
-    specifications: [
-      {
-        id: "outerPackaging",
-        name: "Protective Packaging",
-        options: [
-          { label: "Double-Boxed with Archival Foam Corner Protectors", priceModifier: 25.00, default: true },
-          { label: "Standard Courier Box Only", priceModifier: 0 }
-        ]
-      }
-    ]
-  },
-  {
-    id: "prod-5",
-    name: "Star Wars: The Black Series Darth Vader 1:1 Scale Helmet (Imperial Edition)",
-    basePrice: 229.50,
-    shippingCost: 0,
-    category: "Collectibles",
-    isPreOrder: false,
-    stockCount: 9,
-    condition: "Brand New Sealed",
-    rating: 4.7,
-    reviewCount: 51,
-    images: [
-      "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=800&q=80"
-    ],
-    shortDescription: "Screen-accurate electronic helmet with interior sculpt and magnetic assembly sounds.",
-    description: "Hasbro Pulse authentic line. Features multiple piece magnetic assembly, breathing sound effects, and display stand. Mint collector condition packaging.",
-    itemSpecifics: {
-      "Brand": "Hasbro",
-      "Franchise": "Star Wars",
-      "Scale": "1:1 Full Scale Wearable",
-      "Features": "Electronic Sound FX, Magnetic Collars"
-    },
-    specifications: [
-      {
-        id: "boxProtection",
-        name: "Box Protection & Vault",
-        options: [
-          { label: "Standard Factory Seal + Air Cushion Shell", priceModifier: 10.00, default: true },
-          { label: "Standard Packaging", priceModifier: 0 }
-        ]
-      }
-    ]
-  },
-  {
-    id: "prod-6",
-    name: "Elden Ring: Shadow of the Erdtree Messmer the Impaler 46cm Figure Box",
-    basePrice: 479.00,
-    shippingCost: 0,
-    category: "Collectibles & Statues",
-    isPreOrder: true,
-    expectedRelease: "Next Month Re-Stock",
-    stockCount: 6,
-    condition: "Brand New - Pre-Order Batch #2",
-    rating: 4.9,
-    reviewCount: 31,
-    images: [
-      "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1613771404784-3a5686aa2be3?auto=format&fit=crop&w=800&q=80"
-    ],
-    shortDescription: "Exclusive 46cm Messmer centerpiece statue with 40-page hardcover artbook and steelbook.",
-    description: "FromSoftware Bandai Namco certified collector edition. Includes commemorative certificate of authenticity and DLC art cards.",
-    itemSpecifics: {
-      "Brand": "Bandai Namco / FromSoftware",
-      "Character": "Messmer the Impaler",
-      "Height": "46 cm",
-      "Type": "Statue & Collector Book Bundle"
-    },
-    specifications: [
-      {
-        id: "packagingSpecifics",
-        name: "Packaging Specifics",
-        options: [
-          { label: "Factory Sealed with Acrylic Protective Shield (+ $12.00)", priceModifier: 12.00, default: true },
-          { label: "Standard Sealed Box", priceModifier: 0 }
-        ]
-      }
-    ]
+    "expectedRelease": "Expected to arrive October 20th",
+    "originalPrice": 189.99,
+    "hasPurchaseCap": true,
+    "purchaseCap": 5
   }
 ];

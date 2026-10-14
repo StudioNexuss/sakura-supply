@@ -202,7 +202,7 @@ export default function EmbeddedStockGrid({ isStandaloneShop = false }) {
                   {/* Photo & Badges */}
                   <div className="relative aspect-4/3 w-full bg-[#181822] overflow-hidden">
                     <img
-                      src={product.images[0]}
+                      src={product.images?.[0] || "https://images.unsplash.com/photo-1613771404784-3a5686aa2be3?auto=format&fit=crop&w=800&q=80"}
                       alt={product.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"
@@ -269,19 +269,19 @@ export default function EmbeddedStockGrid({ isStandaloneShop = false }) {
                       <div>
                         <div className="text-[10px] font-bold text-sakura-400/80 uppercase tracking-wider flex items-center gap-1.5">
                           <span>{product.isPreOrder ? 'Pre-Order Price' : 'Price (AUD)'}</span>
-                          {product.originalPrice && product.originalPrice > product.basePrice && (
+                          {product.originalPrice && Number(product.originalPrice) > Number(product.basePrice) && (
                             <span className="bg-emerald-950 text-emerald-300 border border-emerald-500/40 text-[9px] font-extrabold px-1.5 py-0.2 rounded">
-                              SAVE ${(product.originalPrice - product.basePrice).toFixed(2)}
+                              SAVE ${(Number(product.originalPrice) - Number(product.basePrice)).toFixed(2)}
                             </span>
                           )}
                         </div>
                         <div className="flex items-baseline gap-2">
                           <span className="text-xl font-black text-white">
-                            ${product.basePrice.toFixed(2)}
+                            ${Number(product.basePrice || 0).toFixed(2)}
                           </span>
-                          {product.originalPrice && product.originalPrice > product.basePrice && (
+                          {product.originalPrice && Number(product.originalPrice) > Number(product.basePrice) && (
                             <span className="text-xs text-sakura-400/60 line-through font-bold">
-                              ${product.originalPrice.toFixed(2)}
+                              ${Number(product.originalPrice).toFixed(2)}
                             </span>
                           )}
                         </div>

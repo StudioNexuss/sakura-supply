@@ -217,6 +217,21 @@ export function StoreProvider({ children }) {
     });
   };
 
+  const normalizeProduct = (p) => ({
+  ...p,
+  id: p?.id || `prod-${Date.now()}-${Math.random()}`,
+  name: p?.name || 'Untitled Collectible',
+  basePrice: Number(p?.basePrice) || 0,
+  originalPrice: (p?.originalPrice !== null && p?.originalPrice !== undefined && p?.originalPrice !== '') ? Number(p?.originalPrice) : null,
+  shippingCost: Number(p?.shippingCost) || 0,
+  stockCount: Number(p?.stockCount) || 0,
+  category: p?.category || 'Trading Cards',
+  condition: p?.condition || 'Brand New Factory Sealed',
+  images: Array.isArray(p?.images) && p?.images.length > 0 ? p?.images : ['https://images.unsplash.com/photo-1613771404784-3a5686aa2be3?auto=format&fit=crop&w=800&q=80'],
+  specifications: Array.isArray(p?.specifications) ? p?.specifications : [],
+  itemSpecifics: p?.itemSpecifics && typeof p?.itemSpecifics === 'object' ? p?.itemSpecifics : {}
+});
+
   // Products with full CRUD & localStorage persistence (STRICTLY PRESERVING USER'S CURRENT STOCK)
   const [products, setProducts] = useState(() => {
     try {
@@ -224,12 +239,12 @@ export function StoreProvider({ children }) {
       if (saved) {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) {
-          return parsed;
+          return parsed.map(normalizeProduct);
         }
       }
-      return PRODUCTS;
+      return PRODUCTS.map(normalizeProduct);
     } catch {
-      return PRODUCTS;
+      return PRODUCTS.map(normalizeProduct);
     }
   });
 

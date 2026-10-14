@@ -324,13 +324,13 @@ export default function CartPage() {
 
                     {/* Unit price & individual item shipping notice with incremental calculation */}
                     <div className="mt-2 text-xs text-sakura-300/80">
-                      Unit Price: <span className="font-bold text-white">${item.unitPrice.toFixed(2)} AUD</span>
-                      {itemShipping > 0 ? (
+                      Unit Price: <span className="font-bold text-white">${Number(item.unitPrice || 0).toFixed(2)} AUD</span>
+                      {Number(itemShipping) > 0 ? (
                         <span className="ml-2 text-sakura-400 font-semibold">
-                          &bull; Shipping: ${itemShipping.toFixed(2)} AUD
+                          &bull; Shipping: ${Number(itemShipping).toFixed(2)} AUD
                           {item.quantity > 1 && (
                             <span className="text-[10px] text-sakura-300/70 ml-1">
-                              (${itemBaseShipping.toFixed(2)} base + ${(itemShipping - itemBaseShipping).toFixed(2)} add'l)
+                              (${Number(itemBaseShipping).toFixed(2)} base + ${(Number(itemShipping) - Number(itemBaseShipping)).toFixed(2)} add'l)
                             </span>
                           )}
                         </span>
@@ -345,7 +345,7 @@ export default function CartPage() {
                     <div className="text-right">
                       <span className="text-xs font-semibold text-sakura-400 block sm:hidden">Line Total</span>
                       <span className="text-base sm:text-lg font-black text-white">
-                        ${(item.unitPrice * item.quantity).toFixed(2)}
+                        ${(Number(item.unitPrice || 0) * item.quantity).toFixed(2)}
                       </span>
                     </div>
 
