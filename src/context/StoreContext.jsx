@@ -72,14 +72,19 @@ const formatOrderEmailReceipt = (order, recipientEmail = "sakurasupplyau@gmail.c
     })
     .join('\n\n');
 
+  const baseSubtotal = Number(order.subtotal || 0);
+  const shipping = Number(order.shippingCost || 0);
+  const paypalFee = Number(order.paypalFee ?? ((baseSubtotal + shipping) * 0.05));
+  const finalTotal = Number(order.total ?? ((baseSubtotal + shipping) * 1.05));
+
   return `=====================================================
-SAKURA SUPPLY - NEW PAID ORDER & BUYER PAYPAL RECEIPT
+SAKURA SUPPLY - PAID ORDER RECEIPT & SHIPPING DETAILS
 =====================================================
-Dispatched To Merchant: ${recipientEmail}
-Order ID: ${order.orderId}
+Recipient: ${recipientEmail}
+Order ID: #${order.orderId}
 Order Date: ${order.date}
 
---- BUYER & PAYPAL PAYMENT RECEIPT ---
+--- BUYER & PAYMENT DETAILS ---
 Payment Method: ${order.paymentMethod || 'PayPal Verified'}
 Payer PayPal Email: ${order.paypalPayerEmail || order.buyerEmail || 'Verified PayPal Account'}
 Buyer Contact Email: ${order.buyerEmail || 'Not specified'}
@@ -88,32 +93,68 @@ Buyer Phone: ${order.buyerPhone || 'Not specified'}
 --- ITEMS ORDERED ---
 ${itemsText}
 
-Items Subtotal: $${Number(order.subtotal || 0).toFixed(2)} AUD
-Shipping Cost: $${Number(order.shippingCost || 0).toFixed(2)} AUD
-Total Paid: $${Number(order.total || 0).toFixed(2)} AUD
+--- PAYMENT BREAKDOWN (+5% PayPal Processing Fee) ---
+Items Subtotal: $${baseSubtotal.toFixed(2)} AUD
+Shipping Cost: $${shipping.toFixed(2)} AUD
+PayPal Processing Fee (+5%): $${paypalFee.toFixed(2)} AUD
+Total Paid at Checkout: $${finalTotal.toFixed(2)} AUD
 
 --- BUYER SHIPPING ADDRESS ---
 ${order.shippingAddress || 'Address verified on PayPal account'}
 =====================================================`;
 };
 
-// Auto-email dispatch helper that sends the order receipt & shipping address to a designated recipient
+// Auto-email dispatch helper that sends the order receipt & shipping address
 const autoDispatchOrderEmail = async (order, recipientEmail = "sakurasupplyau@gmail.com") => {
-  if (!recipientEmail || !recipientEmail.includes('@')) return null;
-  const emailReceipt = formatOrderEmailReceipt(order, recipientEmail);
+  return sendOrderReceiptEmails(order, recipientEmail, order.buyerEmail);
+};
+
+// Dispatches order receipt to BOTH merchant and buyer automatically without requiring buyer activation.
+// By posting to the merchant's verified FormSubmit endpoint with _autoresponse and the buyer's email,
+// FormSubmit delivers the receipt directly to the buyer's inbox without asking the buyer to activate anything!
+const sendOrderReceiptEmails = async (order, storeEmail = "sakurasupplyau@gmail.com", buyerEmail = null) => {
+  const targetBuyerEmail = buyerEmail || order.buyerEmail || order.paypalPayerEmail;
+  const merchantReceipt = formatOrderEmailReceipt(order, storeEmail);
+  const buyerReceipt = formatOrderEmailReceipt(order, targetBuyerEmail || "Customer");
   const subject = `[Sakura Supply] Paid Order #${order.orderId} - $${Number(order.total).toFixed(2)} AUD`;
+
+  const baseSubtotal = Number(order.subtotal || 0);
+  const shipping = Number(order.shippingCost || 0);
+  const paypalFee = Number(order.paypalFee ?? ((baseSubtotal + shipping) * 0.05));
+  const finalTotal = Number(order.total ?? ((baseSubtotal + shipping) * 1.05));
+
+  // Autoresponse message sent DIRECTLY to the buyer's email without requiring any form activation
+  const buyerAutoresponseMessage = `Thank you for your purchase from Sakura Supply!
+
+Your payment has been completed via PayPal. Below is your official order receipt:
+
+${buyerReceipt}
+
+DISPATCH & HANDLING:
+Your collectibles are packed with collector-grade corner protection and dispatched from Melbourne, VIC via Australia Post Tracked Parcel.
+
+View your orders anytime by signing into your Sakura Supply customer portal.
+
+Kind regards,
+Sakura Supply AU
+Melbourne, Victoria, Australia
+Support: ${storeEmail}`;
 
   const payload = {
     _subject: subject,
     _template: "table",
     _captcha: "false",
+    email: targetBuyerEmail || storeEmail,
+    _replyto: targetBuyerEmail || storeEmail,
+    _autoresponse: buyerAutoresponseMessage,
     "Order ID": order.orderId,
     "Order Date": order.date,
-    "Total Paid AUD": `$${Number(order.total).toFixed(2)} AUD`,
-    "Items Subtotal": `$${Number(order.subtotal).toFixed(2)} AUD`,
-    "Shipping Paid": `$${Number(order.shippingCost).toFixed(2)} AUD`,
+    "Total Paid AUD": `$${finalTotal.toFixed(2)} AUD`,
+    "Items Subtotal": `$${baseSubtotal.toFixed(2)} AUD`,
+    "Shipping Paid": `$${shipping.toFixed(2)} AUD`,
+    "PayPal Fee (5%)": `$${paypalFee.toFixed(2)} AUD`,
     "Buyer Name": order.buyerName || "Customer",
-    "Buyer Email": order.buyerEmail || "Not specified",
+    "Buyer Email": targetBuyerEmail || "Not specified",
     "Buyer Phone": order.buyerPhone || "Not specified",
     "Buyer PayPal Account": order.paypalPayerEmail || "Verified PayPal Account",
     "Buyer Shipping Address": order.shippingAddress || "Address verified on PayPal account",
@@ -121,11 +162,11 @@ const autoDispatchOrderEmail = async (order, recipientEmail = "sakurasupplyau@gm
       const specs = it.selectedSpecs && Object.keys(it.selectedSpecs).length > 0 ? ` (${Object.values(it.selectedSpecs).join(', ')})` : '';
       return `${it.quantity}x ${it.name}${specs} @ $${Number(it.unitPrice).toFixed(2)}`;
     }).join(' | '),
-    "Full PayPal Receipt": emailReceipt
+    "Full Receipt": merchantReceipt
   };
 
   try {
-    const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(recipientEmail)}`, {
+    const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(storeEmail)}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -134,37 +175,12 @@ const autoDispatchOrderEmail = async (order, recipientEmail = "sakurasupplyau@gm
       body: JSON.stringify(payload)
     });
     const data = await res.json().catch(() => null);
-    console.log(`Order email notification dispatched to ${recipientEmail}:`, data);
+    console.log(`[Order Email] Dispatched to ${storeEmail} with autoresponse to ${targetBuyerEmail}:`, data);
   } catch (err) {
-    console.warn(`Background auto-email dispatch note for ${recipientEmail}:`, err);
-  }
-  return emailReceipt;
-};
-
-// Dispatches the order receipt to BOTH the merchant store email and the buyer's account email
-const sendOrderReceiptEmails = async (order, storeEmail = "sakurasupplyau@gmail.com", buyerEmail = null) => {
-  const targetBuyerEmail = buyerEmail || order.buyerEmail;
-  const emailReceipt = formatOrderEmailReceipt(order, storeEmail);
-
-  const dispatches = [];
-
-  // 1. Dispatch to Store Owner (sakurasupplyau@gmail.com)
-  if (storeEmail && storeEmail.includes('@')) {
-    dispatches.push(autoDispatchOrderEmail(order, storeEmail));
+    console.warn(`[Order Email] Background dispatch notice:`, err);
   }
 
-  // 2. Dispatch to Buyer's Account Email (under account settings)
-  if (targetBuyerEmail && targetBuyerEmail.includes('@') && targetBuyerEmail.toLowerCase() !== storeEmail.toLowerCase()) {
-    dispatches.push(autoDispatchOrderEmail(order, targetBuyerEmail));
-  }
-
-  try {
-    await Promise.allSettled(dispatches);
-  } catch (e) {
-    console.warn("Dual email dispatch note:", e);
-  }
-
-  return emailReceipt;
+  return buyerReceipt;
 };
 
 // Generates direct mailto link prefilled with buyer receipt and shipping address
@@ -774,11 +790,15 @@ export function StoreProvider({ children }) {
     setCart([]);
   };
 
-  // Cart shipping and total computations using the incremental rate rule:
-  // Base shipping for 1st unit + 50% base shipping for each additional unit
-  const cartSubtotal = cart.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
+  // Cart shipping and total computations using +5% PayPal fee rule:
+  // Base total = items subtotal + shipping
+  // PayPal Fee (+5%) = base total * 0.05
+  // Final total = base total * 1.05
+  const cartSubtotal = cart.reduce((sum, item) => sum + Number(item.unitPrice || 0) * item.quantity, 0);
   const cartShipping = cart.reduce((sum, item) => sum + calculateItemShipping(item.shippingCost, item.quantity), 0);
-  const cartTotal = cartSubtotal + cartShipping;
+  const cartBaseTotal = cartSubtotal + cartShipping;
+  const cartPaypalFee = cartBaseTotal > 0 ? (cartBaseTotal * 0.05) : 0;
+  const cartTotal = cartBaseTotal > 0 ? (cartBaseTotal * 1.05) : 0;
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   // Official PayPal standard checkout integration:
@@ -820,6 +840,17 @@ export function StoreProvider({ children }) {
       addField(`quantity_${idx}`, item.quantity);
     });
 
+    // Add +5% PayPal Processing Fee line item so final PayPal checkout total is (subtotal + shipping) * 1.05
+    const itemsSubtotal = cartItems.reduce((sum, item) => sum + Number(item.unitPrice || 0) * item.quantity, 0);
+    const baseTotal = itemsSubtotal + Number(shipping || 0);
+    const feeAmount = baseTotal * 0.05;
+    if (feeAmount > 0) {
+      const feeIdx = cartItems.length + 1;
+      addField(`item_name_${feeIdx}`, 'PayPal Processing Fee (+5%)');
+      addField(`amount_${feeIdx}`, Number(feeAmount).toFixed(2));
+      addField(`quantity_${feeIdx}`, '1');
+    }
+
     document.body.appendChild(form);
     form.submit();
     document.body.removeChild(form);
@@ -840,13 +871,18 @@ export function StoreProvider({ children }) {
     const storeEmail = (businessInfo && businessInfo.email) || "sakurasupplyau@gmail.com";
     const finalBuyerEmail = buyerEmail || currentUser?.email || userProfile?.email || "";
 
+    const baseTotal = cartSubtotal + cartShipping;
+    const paypalFee = baseTotal * 0.05;
+    const finalTotal = baseTotal * 1.05;
+
     const newOrder = {
       orderId: `SKR-${Math.floor(100000 + Math.random() * 900000)}`,
       date: new Date().toISOString().split('T')[0],
       items: [...cart],
       subtotal: cartSubtotal,
       shippingCost: cartShipping,
-      total: cartTotal,
+      paypalFee: paypalFee,
+      total: finalTotal,
       paymentMethod: orderData?.paymentMethod || "PayPal Verified (Buyer Protected)",
       paypalPayerEmail,
       buyerName,
@@ -943,6 +979,7 @@ export function StoreProvider({ children }) {
         clearCart,
         cartSubtotal,
         cartShipping,
+        cartPaypalFee,
         cartTotal,
         cartCount,
         userProfile,

@@ -24,6 +24,7 @@ export default function CartPage() {
     products,
     cartSubtotal, 
     cartShipping, 
+    cartPaypalFee,
     cartTotal,
     updateQuantity, 
     removeFromCart, 
@@ -170,8 +171,14 @@ export default function CartPage() {
                 {completedOrder.shippingCost > 0 ? `$${completedOrder.shippingCost.toFixed(2)} AUD` : 'FREE'}
               </span>
             </div>
+            <div className="flex justify-between">
+              <span className="text-sakura-400">PayPal Fee (+5%):</span>
+              <span className="font-bold text-sakura-300">
+                +${Number(completedOrder.paypalFee ?? ((completedOrder.subtotal + completedOrder.shippingCost) * 0.05)).toFixed(2)} AUD
+              </span>
+            </div>
             <div className="flex justify-between border-t border-sakura-900/40 pt-2 text-sm">
-              <span className="text-white font-extrabold">Total:</span>
+              <span className="text-white font-extrabold">Total Paid:</span>
               <span className="font-black text-white">${completedOrder.total.toFixed(2)} AUD</span>
             </div>
             <div className="flex justify-between">
@@ -441,6 +448,12 @@ export default function CartPage() {
                   </span>
                 </div>
                 <div className="flex justify-between text-sakura-200">
+                  <span>PayPal Processing Fee (+5%):</span>
+                  <span className="font-bold text-sakura-300">
+                    +${(cartPaypalFee || ((cartSubtotal + cartShipping) * 0.05)).toFixed(2)} AUD
+                  </span>
+                </div>
+                <div className="flex justify-between text-sakura-200">
                   <span>Collector Packaging:</span>
                   <span className="font-bold text-emerald-400">INCLUDED</span>
                 </div>
@@ -674,6 +687,12 @@ export default function CartPage() {
                 <span className="text-sakura-400">Shipping:</span>
                 <span className="font-semibold text-sakura-300">
                   {cartShipping > 0 ? `$${cartShipping.toFixed(2)} AUD` : 'FREE'}
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-sakura-400">PayPal Fee (+5%):</span>
+                <span className="font-semibold text-sakura-300">
+                  +${(cartPaypalFee || ((cartSubtotal + cartShipping) * 0.05)).toFixed(2)} AUD
                 </span>
               </div>
               <div className="border-t border-sakura-900/40 pt-2 flex justify-between font-extrabold text-sm">

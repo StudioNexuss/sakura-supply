@@ -217,9 +217,9 @@ export default function PoliciesPage() {
               </div>
 
               <div className="p-4 bg-[#161622] rounded-2xl border border-sakura-900/40">
-                <h4 className="font-bold text-white text-sm mb-1">2. Exclusive Payment Gateway</h4>
+                <h4 className="font-bold text-white text-sm mb-1">2. Exclusive Payment Gateway & Processing Fee</h4>
                 <p>
-                  To maintain strict fraud protection and merchant compliance, <strong>PayPal is the sole accepted payment method</strong> on this platform.
+                  To maintain strict fraud protection and merchant compliance, <strong>PayPal is the sole accepted payment method</strong> on this platform. A standard 5% payment processing fee applies at checkout to all transactions.
                 </p>
               </div>
 

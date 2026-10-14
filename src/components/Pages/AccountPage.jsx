@@ -756,8 +756,8 @@ export default function AccountPage() {
                             <span className="text-white">{order.shippingAddress || 'Address on file'}</span>
                           </div>
                           <div className="text-right">
-                            <span className="text-sakura-400/80 mr-2">Paid via PayPal:</span>
-                            <span className="font-black text-white text-sm">${order.total.toFixed(2)} AUD</span>
+                            <span className="text-sakura-400/80 mr-2">Paid via PayPal (incl. 5% fee):</span>
+                            <span className="font-black text-white text-sm">${Number(order.total || 0).toFixed(2)} AUD</span>
                           </div>
                         </div>
 
