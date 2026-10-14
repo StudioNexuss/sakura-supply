@@ -62,7 +62,7 @@ const INITIAL_ORDERS = [
 ];
 
 // Helper to format buyer's PayPal receipt and shipping address for email notification
-export const formatOrderEmailReceipt = (order, recipientEmail = "sakurasupplyau@gmail.com") => {
+const formatOrderEmailReceipt = (order, recipientEmail = "sakurasupplyau@gmail.com") => {
   const itemsText = (order.items || [])
     .map((it, idx) => {
       const specs = it.selectedSpecs && Object.keys(it.selectedSpecs).length > 0
@@ -98,7 +98,7 @@ ${order.shippingAddress || 'Address verified on PayPal account'}
 };
 
 // Auto-email dispatch helper that sends the order receipt & shipping address to a designated recipient
-export const autoDispatchOrderEmail = async (order, recipientEmail = "sakurasupplyau@gmail.com") => {
+const autoDispatchOrderEmail = async (order, recipientEmail = "sakurasupplyau@gmail.com") => {
   if (!recipientEmail || !recipientEmail.includes('@')) return null;
   const emailReceipt = formatOrderEmailReceipt(order, recipientEmail);
   const subject = `[Sakura Supply] Paid Order #${order.orderId} - $${Number(order.total).toFixed(2)} AUD`;
@@ -142,7 +142,7 @@ export const autoDispatchOrderEmail = async (order, recipientEmail = "sakurasupp
 };
 
 // Dispatches the order receipt to BOTH the merchant store email and the buyer's account email
-export const sendOrderReceiptEmails = async (order, storeEmail = "sakurasupplyau@gmail.com", buyerEmail = null) => {
+const sendOrderReceiptEmails = async (order, storeEmail = "sakurasupplyau@gmail.com", buyerEmail = null) => {
   const targetBuyerEmail = buyerEmail || order.buyerEmail;
   const emailReceipt = formatOrderEmailReceipt(order, storeEmail);
 
@@ -168,14 +168,14 @@ export const sendOrderReceiptEmails = async (order, storeEmail = "sakurasupplyau
 };
 
 // Generates direct mailto link prefilled with buyer receipt and shipping address
-export const getOrderMailtoUrl = (order, recipientEmail = "sakurasupplyau@gmail.com") => {
+const getOrderMailtoUrl = (order, recipientEmail = "sakurasupplyau@gmail.com") => {
   const subject = `[Sakura Supply] Paid Order #${order.orderId} - $${Number(order.total).toFixed(2)} AUD`;
   const body = formatOrderEmailReceipt(order, recipientEmail);
   return `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 };
 
 // Incremental Shipping Rule: First unit pays base shipping, each additional unit pays half the base shipping
-export const calculateItemShipping = (baseShipping, quantity) => {
+const calculateItemShipping = (baseShipping, quantity) => {
   const base = Number(baseShipping) || 0;
   const qty = Number(quantity) || 0;
   if (base <= 0 || qty <= 0) return 0;
