@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased text-sakura-100 bg-[#09090b] font-sans;
+    background-color: #09090b;
+    color: #ffe4ea;
+  }
+}
+
+/* Custom smooth transitions */
+.transition-smooth {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Custom Dark Pink Scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+::-webkit-scrollbar-thumb {
+  background: #331520;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f43f6e;
+}
