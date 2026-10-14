@@ -1,4 +1,4 @@
-# Apex Collectibles - Official Storefront
+# Sakura Supply - Official Storefront
 
 A modern, responsive e-commerce web application featuring eBay-style listing detail views, dynamic packaging specification pricing (e.g. shrink-wrap options), Australian ABN verification, mandatory policy acknowledgment, and PayPal checkout. Designed for GitHub Pages hosting with custom domain support.
 
