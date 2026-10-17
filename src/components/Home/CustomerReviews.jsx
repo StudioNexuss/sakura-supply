@@ -1,9 +1,12 @@
 import React from 'react';
+import { useStore } from '../../context/StoreContext';
 import { REVIEWS } from '../../data/reviews';
 import { CherryBlossomTreeIcon } from '../Header';
 import { Star, CheckCircle2 } from 'lucide-react';
 
 export default function CustomerReviews() {
+  const { orderCount } = useStore();
+  const displayOrders = orderCount || 220;
   return (
     <section className="py-12 bg-[#09090b] border-b border-sakura-900/40">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -31,7 +34,7 @@ export default function CustomerReviews() {
             </div>
             <div className="text-xs">
               <span className="font-extrabold text-white">4.98 / 5.0</span>
-              <span className="text-sakura-400/70 ml-1.5">(140+ orders)</span>
+              <span className="text-sakura-400/70 ml-1.5">({displayOrders}+ orders)</span>
             </div>
           </div>
         </div>

@@ -529,6 +529,32 @@ export function StoreProvider({ children }) {
     }
   });
 
+  const BASE_ORDER_COUNT = 220;
+
+  // Order count starting at 220, incrementing by 1 per order placed
+  const [orderCount, setOrderCount] = useState(() => {
+    try {
+      const saved = localStorage.getItem('sakura_order_count');
+      if (saved) {
+        const parsed = parseInt(saved, 10);
+        if (!isNaN(parsed) && parsed >= BASE_ORDER_COUNT) {
+          return parsed;
+        }
+      }
+    } catch (e) {
+      console.error(e);
+    }
+    return BASE_ORDER_COUNT;
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('sakura_order_count', String(orderCount));
+    } catch (e) {
+      console.error(e);
+    }
+  }, [orderCount]);
+
   // Persist products
   useEffect(() => {
     try {
@@ -937,6 +963,7 @@ export function StoreProvider({ children }) {
     });
 
     setOrders((prev) => [newOrder, ...prev]);
+    setOrderCount((prev) => prev + 1);
     clearCart();
     return newOrder;
   };
@@ -985,6 +1012,7 @@ export function StoreProvider({ children }) {
         userProfile,
         setUserProfile,
         orders,
+        orderCount,
         createOrder,
         currentUser,
         setCurrentUser,
