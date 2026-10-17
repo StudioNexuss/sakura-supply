@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { PRODUCTS } from '../data/products';
+import { REVIEWS } from '../data/reviews';
 import { BUSINESS_INFO } from '../data/business';
 import { DEFAULT_USERS } from '../data/users';
 
@@ -555,6 +556,33 @@ export function StoreProvider({ children }) {
     }
   }, [orderCount]);
 
+  // Customer Reviews (initialized from localStorage or REVIEWS with persistence)
+  const [reviews, setReviews] = useState(() => {
+    try {
+      const saved = localStorage.getItem('sakura_reviews');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          const existingIds = new Set(parsed.map((r) => r.id));
+          const missingBase = REVIEWS.filter((r) => !existingIds.has(r.id));
+          return [...parsed, ...missingBase];
+        }
+      }
+    } catch (e) {
+      console.error(e);
+    }
+    return REVIEWS;
+  });
+
+  // Persist customer reviews
+  useEffect(() => {
+    try {
+      localStorage.setItem('sakura_reviews', JSON.stringify(reviews));
+    } catch (e) {
+      console.error(e);
+    }
+  }, [reviews]);
+
   // Persist products
   useEffect(() => {
     try {
@@ -918,6 +946,8 @@ export function StoreProvider({ children }) {
       emailNotificationSent: true,
       emailSentTo: storeEmail,
       buyerEmailSentTo: finalBuyerEmail,
+      userId: currentUser?.id || userProfile?.id || null,
+      userUsername: currentUser?.username || null,
       ...orderData
     };
 
@@ -968,6 +998,74 @@ export function StoreProvider({ children }) {
     return newOrder;
   };
 
+  // Check if an order has already received a customer review
+  const hasReviewedOrder = (orderId) => {
+    if (!orderId) return false;
+    return reviews.some((r) => r.orderId === orderId);
+  };
+
+  // Get review submitted for a specific order
+  const getOrderReview = (orderId) => {
+    if (!orderId) return null;
+    return reviews.find((r) => r.orderId === orderId) || null;
+  };
+
+  // Add a verified customer review (appears dynamically on home reviews grid)
+  const addReview = ({ orderId = null, rating = 5, comment = '', author = '', location = '', product = '' }) => {
+    const cleanComment = String(comment || '').trim();
+    if (!cleanComment) {
+      return { success: false, error: 'Please enter a review comment.' };
+    }
+
+    let reviewerAuthor = String(author || '').trim();
+    if (!reviewerAuthor) {
+      if (currentUser?.displayName) reviewerAuthor = currentUser.displayName;
+      else if (currentUser?.username) reviewerAuthor = currentUser.username;
+      else if (userProfile?.shippingAddress?.fullName) reviewerAuthor = userProfile.shippingAddress.fullName;
+      else reviewerAuthor = 'Verified Collector';
+    }
+
+    let reviewerLocation = String(location || '').trim();
+    if (!reviewerLocation) {
+      const city = currentUser?.shippingAddress?.city || userProfile?.shippingAddress?.city;
+      const state = currentUser?.shippingAddress?.state || userProfile?.shippingAddress?.state;
+      if (city && state) {
+        reviewerLocation = `${city}, ${state}`;
+      } else {
+        reviewerLocation = 'Australia';
+      }
+    }
+
+    const todayStr = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+
+    const newRev = {
+      id: `rev-${Date.now()}-${Math.floor(100 + Math.random() * 900)}`,
+      orderId: orderId || null,
+      author: reviewerAuthor,
+      location: reviewerLocation,
+      rating: Math.min(5, Math.max(1, Number(rating) || 5)),
+      date: todayStr,
+      product: product || 'Sealed Collectibles',
+      comment: cleanComment,
+      verifiedPurchase: true,
+      userId: currentUser?.id || null
+    };
+
+    setReviews((prev) => [newRev, ...prev]);
+
+    if (orderId) {
+      setOrders((prev) =>
+        prev.map((ord) => (ord.orderId === orderId ? { ...ord, hasReviewed: true, reviewId: newRev.id } : ord))
+      );
+    }
+
+    return { success: true, review: newRev };
+  };
+
+  const deleteReview = (id) => {
+    setReviews((prev) => prev.filter((r) => r.id !== id));
+  };
+
   return (
     <StoreContext.Provider
       value={{
@@ -1014,6 +1112,11 @@ export function StoreProvider({ children }) {
         orders,
         orderCount,
         createOrder,
+        reviews,
+        addReview,
+        deleteReview,
+        hasReviewedOrder,
+        getOrderReview,
         currentUser,
         setCurrentUser,
         isAdmin,

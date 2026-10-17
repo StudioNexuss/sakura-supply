@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useStore } from '../../context/StoreContext';
 import { BUSINESS_INFO } from '../../data/business';
 import { CherryBlossomTreeIcon } from '../Header';
+import OrderReviewCard from '../Reviews/OrderReviewCard';
 import { 
   User, 
   CreditCard, 
@@ -22,7 +23,9 @@ import {
   Lock,
   Shield,
   KeyRound,
-  AlertCircle
+  AlertCircle,
+  Star,
+  MessageSquare
 } from 'lucide-react';
 
 export default function AccountPage() {
@@ -38,10 +41,14 @@ export default function AccountPage() {
     setAdminModalOpen,
     businessInfo,
     formatOrderEmailReceipt,
-    getOrderMailtoUrl
+    getOrderMailtoUrl,
+    reviews,
+    hasReviewedOrder,
+    getOrderReview
   } = useStore();
 
   const [copiedOrderId, setCopiedOrderId] = useState(null);
+  const [openReviewOrderId, setOpenReviewOrderId] = useState(null);
 
   // Auth portal state for guests / non-logged in visitors
   const [authMode, setAuthMode] = useState('signin'); // 'signin' | 'register'
@@ -161,9 +168,14 @@ export default function AccountPage() {
     if (isAdmin) return true;
     if (!currentUser) return false;
     return (
-      ord.userId === currentUser.id ||
-      (ord.shippingAddress && ord.shippingAddress.toLowerCase().includes(currentUser.username.toLowerCase())) ||
-      ord.paypalPayerEmail === currentUser.email
+      (ord.userId && ord.userId === currentUser.id) ||
+      (ord.buyerEmail && ord.buyerEmail.toLowerCase() === currentUser.email?.toLowerCase()) ||
+      (ord.paypalPayerEmail && (
+        ord.paypalPayerEmail.toLowerCase() === currentUser.email?.toLowerCase() ||
+        (currentUser.paypalEmail && ord.paypalPayerEmail.toLowerCase() === currentUser.paypalEmail.toLowerCase())
+      )) ||
+      (currentUser.username && ord.shippingAddress && ord.shippingAddress.toLowerCase().includes(currentUser.username.toLowerCase())) ||
+      (currentUser.displayName && ord.shippingAddress && ord.shippingAddress.toLowerCase().includes(currentUser.displayName.toLowerCase()))
     );
   });
 
@@ -797,6 +809,59 @@ export default function AccountPage() {
                             {copiedOrderId === order.orderId ? 'Receipt Copied!' : 'Copy Full Receipt'}
                           </button>
                         </div>
+                      </div>
+
+                      {/* Customer Review Section for Order */}
+                      <div className="pt-1 border-t border-sakura-950/80">
+                        {hasReviewedOrder(order.orderId) ? (
+                          <OrderReviewCard order={order} />
+                        ) : (
+                          <div>
+                            {openReviewOrderId === order.orderId ? (
+                              <div className="space-y-2">
+                                <div className="flex items-center justify-between">
+                                  <span className="text-xs font-bold text-white flex items-center gap-1.5">
+                                    <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                                    Write a Review for Order #{order.orderId}
+                                  </span>
+                                  <button
+                                    type="button"
+                                    onClick={() => setOpenReviewOrderId(null)}
+                                    className="text-[11px] text-sakura-400 hover:text-white underline cursor-pointer"
+                                  >
+                                    Cancel
+                                  </button>
+                                </div>
+                                <OrderReviewCard 
+                                  order={order}
+                                  title={`Review for Order #${order.orderId}`}
+                                  subtitle="Your verified review will be displayed in our store's customer feedback section."
+                                  onSuccess={() => setOpenReviewOrderId(null)}
+                                />
+                              </div>
+                            ) : (
+                              <div className="flex flex-wrap items-center justify-between gap-3 bg-[#11111a] p-3 rounded-2xl border border-sakura-900/30">
+                                <div>
+                                  <div className="text-xs font-bold text-white flex items-center gap-1.5">
+                                    <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                                    Verified Collector Review
+                                  </div>
+                                  <p className="text-[11px] text-sakura-300/70">
+                                    You haven't reviewed this purchase yet. Share your experience with other collectors.
+                                  </p>
+                                </div>
+                                <button
+                                  type="button"
+                                  onClick={() => setOpenReviewOrderId(order.orderId)}
+                                  className="px-3 py-1.5 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/40 text-xs font-bold inline-flex items-center gap-1.5 transition-colors cursor-pointer shadow-xs"
+                                >
+                                  <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                                  Leave a Review
+                                </button>
+                              </div>
+                            )}
+                          </div>
+                        )}
                       </div>
 
                     </div>

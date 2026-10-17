@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useStore } from '../../context/StoreContext';
 import { BUSINESS_INFO } from '../../data/business';
 import { CherryBlossomTreeIcon } from '../Header';
+import OrderReviewCard from '../Reviews/OrderReviewCard';
 import { 
   ShoppingBag, 
   Trash2, 
@@ -139,7 +140,7 @@ export default function CartPage() {
   if (completedOrder) {
     return (
       <div className="min-h-[70vh] bg-[#09090b] py-12 px-4 sm:px-6 flex items-center justify-center">
-        <div className="bg-[#111118] max-w-lg w-full rounded-3xl p-8 border border-sakura-500/40 shadow-2xl text-center space-y-6 animate-in zoom-in-95">
+        <div className="bg-[#111118] max-w-xl w-full rounded-3xl p-6 sm:p-8 border border-sakura-500/40 shadow-2xl text-center space-y-6 animate-in zoom-in-95">
           <div className="w-16 h-16 bg-emerald-950 border border-emerald-500/40 rounded-full flex items-center justify-center mx-auto text-emerald-400">
             <CheckCircle2 className="w-10 h-10" />
           </div>
@@ -213,16 +214,25 @@ export default function CartPage() {
             </button>
           </div>
 
+          {/* Collector Review Section on Order Confirmed Screen */}
+          <div className="pt-2">
+            <OrderReviewCard 
+              order={completedOrder} 
+              title="Leave a Collector Review" 
+              subtitle="Help the Australian collector community! Share your feedback on this order."
+            />
+          </div>
+
           <div className="pt-2 flex flex-col sm:flex-row gap-3 justify-center">
             <button
               onClick={() => navigateTo('account')}
-              className="px-6 py-3 rounded-2xl bg-sakura-600 hover:bg-sakura-700 text-white font-bold text-xs sm:text-sm transition-colors"
+              className="px-6 py-3 rounded-2xl bg-sakura-600 hover:bg-sakura-700 text-white font-bold text-xs sm:text-sm transition-colors cursor-pointer"
             >
               View in Account & Orders
             </button>
             <button
               onClick={() => navigateTo('shop')}
-              className="px-6 py-3 rounded-2xl bg-[#181824] hover:bg-[#202030] text-sakura-200 font-semibold text-xs sm:text-sm transition-colors border border-sakura-900/40"
+              className="px-6 py-3 rounded-2xl bg-[#181824] hover:bg-[#202030] text-sakura-200 font-semibold text-xs sm:text-sm transition-colors border border-sakura-900/40 cursor-pointer"
             >
               Continue Browsing
             </button>

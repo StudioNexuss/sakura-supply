@@ -1,12 +1,17 @@
 import React from 'react';
 import { useStore } from '../../context/StoreContext';
-import { REVIEWS } from '../../data/reviews';
 import { CherryBlossomTreeIcon } from '../Header';
 import { Star, CheckCircle2 } from 'lucide-react';
 
 export default function CustomerReviews() {
-  const { orderCount } = useStore();
+  const { reviews, orderCount } = useStore();
   const displayOrders = orderCount || 220;
+  const allReviews = reviews && reviews.length > 0 ? reviews : [];
+
+  const averageScore = allReviews.length > 0
+    ? (allReviews.reduce((sum, r) => sum + Number(r.rating || 5), 0) / allReviews.length).toFixed(2)
+    : '4.98';
+
   return (
     <section className="py-12 bg-[#09090b] border-b border-sakura-900/40">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -33,7 +38,7 @@ export default function CustomerReviews() {
               ))}
             </div>
             <div className="text-xs">
-              <span className="font-extrabold text-white">4.98 / 5.0</span>
+              <span className="font-extrabold text-white">{averageScore} / 5.0</span>
               <span className="text-sakura-400/70 ml-1.5">({displayOrders}+ orders)</span>
             </div>
           </div>
@@ -41,25 +46,32 @@ export default function CustomerReviews() {
 
         {/* Reviews Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-          {REVIEWS.map((rev) => (
+          {allReviews.map((rev) => (
             <div 
               key={rev.id}
-              className="bg-[#101018] hover:bg-[#141420] border border-sakura-900/40 rounded-3xl p-5 flex flex-col justify-between transition-all hover:border-sakura-500/40"
+              className="bg-[#101018] hover:bg-[#141420] border border-sakura-900/40 rounded-3xl p-5 flex flex-col justify-between transition-all hover:border-sakura-500/40 shadow-xs"
             >
               <div>
                 {/* Rating stars & verified badge */}
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center text-amber-400">
-                    {[...Array(rev.rating)].map((_, i) => (
+                    {[...Array(Number(rev.rating) || 5)].map((_, i) => (
                       <Star key={i} className="w-3 h-3 fill-amber-400 text-amber-400" />
                     ))}
                   </div>
-                  {rev.verifiedPurchase && (
-                    <span className="inline-flex items-center gap-1 text-[9px] font-bold text-emerald-300 bg-emerald-950 px-2 py-0.5 rounded-md border border-emerald-800/40">
-                      <CheckCircle2 className="w-3 h-3" />
-                      Verified
-                    </span>
-                  )}
+                  <div className="flex items-center gap-1">
+                    {rev.orderId && (
+                      <span className="text-[9px] font-mono text-sakura-400/80 bg-sakura-950/60 px-1.5 py-0.5 rounded border border-sakura-900/50">
+                        #{rev.orderId}
+                      </span>
+                    )}
+                    {rev.verifiedPurchase && (
+                      <span className="inline-flex items-center gap-1 text-[9px] font-bold text-emerald-300 bg-emerald-950 px-2 py-0.5 rounded-md border border-emerald-800/40">
+                        <CheckCircle2 className="w-3 h-3" />
+                        Verified
+                      </span>
+                    )}
+                  </div>
                 </div>
 
                 {/* Comment quote */}
@@ -72,10 +84,13 @@ export default function CustomerReviews() {
               <div className="pt-3 border-t border-sakura-950 text-xs">
                 <div className="flex items-center justify-between">
                   <span className="font-bold text-white">{rev.author}</span>
-                  <span className="text-sakura-400/60 text-[10px]">{rev.location}</span>
+                  <span className="text-sakura-400/60 text-[10px]">{rev.date || 'Recent'}</span>
                 </div>
                 <div className="text-[11px] text-sakura-400 font-medium truncate mt-0.5">
                   Ordered: {rev.product}
+                </div>
+                <div className="text-sakura-400/60 text-[10px] mt-0.5">
+                  {rev.location}
                 </div>
               </div>
             </div>
